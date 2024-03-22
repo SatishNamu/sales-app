@@ -12,6 +12,6 @@ from models.course import Course
 
 
 def hello_world():
-    rec = db.get_or_404(Course,1)
+    rec = db.get_or_404(User,1)
     return f"HELLO WORLD.! from {rec.username} "
 
