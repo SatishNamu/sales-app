@@ -17,7 +17,8 @@ db.init_app(app)
 
 from models.user import User
 from models.course import Course
-
+from routes.users import users
+from routes.courses import courses
 
 @app.route('/')
 def hello_world():
@@ -25,14 +26,3 @@ def hello_world():
     return render_template('index.html', user=rec)
 
 
-@app.route('/users')
-def users():
-    user_recs = db.session.query(User).all()
-    users = list(map(lambda rec: rec.__dict__, user_recs))
-    return render_template('users.html', users=users)
-
-@app.route('/courses')
-def courses():
-    course_recs = db.session.query(Course).all()
-    courses = list(map(lambda rec: rec.__dict__, course_recs))
-    return render_template('courses.html', courses=courses)
